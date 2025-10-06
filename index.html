@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Ödeme</title>
+</head>
+<body>
+    <button onclick="closePayment()">Kapat</button>
+
+    <script>
+        function closePayment() {
+            console.log("🔙 Kapat butonuna tıklandı");
+            
+            // Flutter'a mesaj gönder
+            if (window.FlutterChannel) {
+                window.FlutterChannel.postMessage('success');
+            }
+        }
+
+        // Sayfa yüklendiğinde
+        window.onload = function() {
+            console.log("📄 Test sayfası yüklendi");
+            console.log("🔗 FlutterChannel:", window.FlutterChannel ? "Mevcut" : "Mevcut değil");
+        };
+    </script>
+</body>
+</html>

@@ -1,1 +1,0 @@
-# kaski-odeme-test
