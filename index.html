@@ -1,105 +1,135 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ödeme Başarılı</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #2cf321; /* Flutter Colors.blue */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: start;
-            height: 100vh;
-            color: white;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ödeme Başarılı</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, #2196F3 0%, #001d35 100%);
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        header {
-            width: 100%;
-            text-align: center;
-            padding: 20px 0;
-            background-color: #d721f3;
-        }
+    header {
+      width: 100%;
+      text-align: center;
+      padding: 20px 0;
+    }
 
-        header img {
-            max-width: 200px;
-            height: auto;
-        }
+    header img {
+      max-width: 180px;
+      height: auto;
+    }
 
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 30px;
-            text-align: center;
-        }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 20px;
+      max-width: 90%;
+    }
 
-        h1 {
-            font-size: 28px;
-            font-weight: bold;
-        }
+    .icon {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      animation: pop 0.5s ease-out;
+    }
 
-        p {
-            font-size: 18px;
-        }
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
 
-        button {
-            padding: 12px 24px;
-            font-size: 18px;
-            font-weight: bold;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            background-color: white;
-            color: #2196F3;
-            transition: all 0.3s ease;
-        }
+    .icon svg {
+      width: 60px;
+      height: 60px;
+      stroke: #4CAF50;
+      stroke-width: 3;
+      fill: none;
+    }
 
-        button:hover {
-            background-color: #1976D2;
-            color: white;
-        }
+    h1 {
+      font-size: 26px;
+      margin: 10px 0;
+      font-weight: 600;
+    }
 
-        #log {
-            font-size: 14px;
-            color: #e0e0e0;
-            margin-top: 10px;
-        }
-    </style>
+    p {
+      font-size: 17px;
+      opacity: 0.9;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 28px;
+      font-size: 17px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #fff;
+      color: #001d35;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #001d35;
+      color: #fff;
+    }
+
+    footer {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.7);
+      padding: 10px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <img src="https://www.maraskaski.gov.tr/wp-content/uploads/2023/05/logo.png" alt="Maraş Kaski Logo">
-    </header>
+  <header>
+    <img src="https://www.maraskaski.gov.tr/wp-content/uploads/2023/05/logo.png" alt="Maraş Kaski Logo">
+  </header>
 
-    <main>
-        <h1>Ödemeniz başarıyla tamamlanmıştır ✅</h1>
-        <p>Teşekkür ederiz! İşleminiz güvenli bir şekilde gerçekleşti.</p>
-        <button onclick="closePayment()">Tamam</button>
-        <div id="log"></div>
-    </main>
+  <main>
+    <div class="icon">
+      <svg viewBox="0 0 52 52">
+        <circle cx="26" cy="26" r="25" fill="none"/>
+        <path d="M14 27l7 7 17-17" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h1>Ödemeniz başarıyla tamamlandı</h1>
+    <p>Teşekkür ederiz! İşleminiz güvenli bir şekilde sonuçlandı.</p>
+    <button onclick="closePayment()">Ana Sayfaya Dön</button>
+  </main>
 
-    <script>
-        function closePayment() {
-            console.log("🔙 Tamam butonuna tıklandı");
-            document.getElementById('log').innerText = "Tamam butonuna tıklandı";
+  <footer>© 2025 Maraş KASKİ - Tüm hakları saklıdır.</footer>
 
-            // Flutter'a mesaj gönder
-            if (window.FlutterChannel) {
-                window.FlutterChannel.postMessage('success');
-            }
-        }
+  <script>
+    function closePayment() {
+      console.log("Ana sayfaya dön butonuna tıklandı");
+      if (window.FlutterChannel) {
+        window.FlutterChannel.postMessage('success');
+      }
+    }
 
-        window.onload = function() {
-            console.log("📄 Ödeme başarı ekranı yüklendi");
-            console.log("🔗 FlutterChannel:", window.FlutterChannel ? "Mevcut" : "Mevcut değil");
-            document.getElementById('log').innerText = "Ödeme başarı ekranı yüklendi";
-        };
-    </script>
+    window.onload = function() {
+      console.log("Başarılı ödeme sayfası yüklendi");
+    };
+  </script>
 </body>
 </html>
